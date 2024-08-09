@@ -26,6 +26,7 @@ jobs:
           reporter: github-check
           level: info
           working_directory: tests/reviewdog-reporters
+          tflint_version: v0.49.0
 
       # The check is expected to fail on the test data
       - name: Check return codes
