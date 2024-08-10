@@ -44,7 +44,7 @@ echo '::group::Preparing'
 echo '::endgroup::'
 
 echo "::group::🐶 Installing reviewdog (${REVIEWDOG_VERSION}) ... https://github.com/reviewdog/reviewdog"
-  go install github.com/massongit/reviewdog/cmd/reviewdog@add_link
+  go install github.com/massongit/reviewdog/cmd/reviewdog@massongit-patch-1
 echo '::endgroup::'
 
 echo "::group:: Installing tflint (${tflint_version}) ... https://github.com/terraform-linters/tflint"
