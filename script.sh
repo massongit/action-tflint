@@ -25,7 +25,7 @@ echo '::group::Preparing'
 
   TEMP_PATH="$(mktemp -d)"
   echo "Detected ${os} running on ${arch}, will install tools in ${TEMP_PATH}"
-  REVIEWDOG_PATH="${TEMP_PATH}/massongit"
+  REVIEWDOG_PATH="$(go env GOPATH)/bin"
   TFLINT_PATH="${TEMP_PATH}/tflint"
 
   if [[ -z "${INPUT_TFLINT_VERSION}" ]] || [[ "${INPUT_TFLINT_VERSION}" == "latest" ]]; then
