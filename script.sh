@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fail fast on errors, unset variables, and failures in piped commandsss
+# Fail fast on errors, unset variables, and failures in piped commandssss
 set -Eeuo pipefail
 
 cd "${GITHUB_WORKSPACE}/${INPUT_WORKING_DIRECTORY}" || exit
