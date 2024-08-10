@@ -1,4 +1,4 @@
-# GitHub Action: Run tflint with reviewdog
+# GitHub Action: Run tflint with reviewdogg
 
 [![Test](https://github.com/reviewdog/action-tflint/workflows/Test/badge.svg)](https://github.com/reviewdog/action-tflint/actions?query=workflow%3ATest)
 [![reviewdog](https://github.com/reviewdog/action-tflint/workflows/reviewdog/badge.svg)](https://github.com/reviewdog/action-tflint/actions?query=workflow%3Areviewdog)
