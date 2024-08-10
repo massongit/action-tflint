@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fail fast on errors, unset variables, and failures in piped commandss
+# Fail fast on errors, unset variables, and failures in piped commands
 set -Eeuo pipefail
 
 cd "${GITHUB_WORKSPACE}/${INPUT_WORKING_DIRECTORY}" || exit
@@ -19,13 +19,14 @@ echo '::group::Preparing'
   unameArch="$(uname -m)"
   case "${unameArch}" in
     x86*)      arch=amd64;;
-    aarch64*)  arch=arm;;
+    aarch64*)  arch=arm64;;
+    arm64*)    arch=arm64;;
     *)         echo "Unsupported architecture: ${unameArch}" && exit 1
   esac
 
   TEMP_PATH="$(mktemp -d)"
   echo "Detected ${os} running on ${arch}, will install tools in ${TEMP_PATH}"
-  REVIEWDOG_PATH="$(go env GOPATH)/bin"
+  REVIEWDOG_PATH="${TEMP_PATH}/reviewdog"
   TFLINT_PATH="${TEMP_PATH}/tflint"
 
   if [[ -z "${INPUT_TFLINT_VERSION}" ]] || [[ "${INPUT_TFLINT_VERSION}" == "latest" ]]; then
@@ -44,7 +45,7 @@ echo '::group::Preparing'
 echo '::endgroup::'
 
 echo "::group::🐶 Installing reviewdog (${REVIEWDOG_VERSION}) ... https://github.com/reviewdog/reviewdog"
-  go install github.com/massongit/reviewdog/cmd/reviewdog@massongit-patch-1
+  GOBIN="$REVIEWDOG_PATH" go install github.com/massongit/reviewdog/cmd/reviewdog@massongit-patch-1
 echo '::endgroup::'
 
 echo "::group:: Installing tflint (${tflint_version}) ... https://github.com/terraform-linters/tflint"
